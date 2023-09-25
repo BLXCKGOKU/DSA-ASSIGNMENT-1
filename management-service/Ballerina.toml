@@ -1,0 +1,8 @@
+[package]
+org = "Vaapi"
+name = "management_service"
+version = "0.1.1"
+distribution = "2201.7.2"
+
+[build-options]
+observabilityIncluded = true
