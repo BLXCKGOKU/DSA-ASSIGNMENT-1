@@ -1,0 +1,10 @@
+{
+    "name": "Course Name",
+    "code": "Course Code",
+    "officeNumber": "Office Number",
+    "staffName": "Staff Name",
+    "staffNumber": "Staff Number",
+    "title": "Course Title",
+    "coursesTeaching": ["Course 1", "Course 2"]
+  }
+  

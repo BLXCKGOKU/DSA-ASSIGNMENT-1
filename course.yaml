@@ -1,0 +1,289 @@
+openapi: "3.0.2"
+info:
+  title: API Title
+  version: "1.0"
+servers:
+  - url: http://localhost:4000
+paths:
+  /getAllcourses:
+    get:
+      summary: Get All Courses
+      operationId: getAllCourses
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received All Course
+                type: array
+                items:
+                  $ref: "#/components/schemas/Course"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /getCourseByCode:
+    get:
+      summary: Get Course By Code
+      operationId: getCourseByCode
+      parameters:
+        - name: code
+          in: query
+          description: Get Course By Course CODE
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received Course
+                $ref: "#/components/schemas/Course"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /getCourseByName/{name}:
+    get:
+      summary: Get Course by Name
+      operationId: getCourseByName
+      parameters:
+        - name: code
+          in: path
+          description: Get Course By Course Name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received Course
+                $ref: "#/components/schemas/Course"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /createCourse:
+    post:
+      summary: Create new Courses
+      description: create course with name, code, lectures, number of students
+      operationId: createCourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Course has been saved successfully
+                type: string
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /updateCourse:
+    post:
+      summary: Updated Courses
+      description: update course using course code
+      operationId: updateCourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Course has been updated successfully
+                type: string
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /deleteCourseByName/{name}:
+    delete:
+      summary: Delete Course by Name
+      description: Delete Course By Course Name
+      operationId: deleteCourseByName
+      parameters:
+        - name: code
+          in: path
+          description: Delete Course By Course Name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Deleted Successfully Course
+                $ref: "#/components/schemas/Course"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+   /getAllcourses:
+    get:
+      summary: Get All Lecturer
+      operationId: getAllLecturer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received All Lecturer
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lecturer"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /getLecturerByCode:
+    get:
+      summary: Get Lecturer By Code
+      operationId: getLecturerByCode
+      parameters:
+        - name: code
+          in: query
+          description: Get Lecturer By Lecturer CODE
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received Lecturer
+                $ref: "#/components/schemas/Lecturer"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /getLecturerByName/{name}:
+    get:
+      summary: Get Lecturer by Name
+      operationId: getLecturerByName
+      parameters:
+        - name: code
+          in: path
+          description: Get Lecturer By Lecturer Name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Successfully Received Lecturer
+                $ref: "#/components/schemas/Lecturer"
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /createLecturer:
+    post:
+      summary: Create new Lecturer
+      description: create course with name, code, lectures, number of students
+      operationId: createLecturer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lecturer"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Course has been saved successfully
+                type: string
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /updateLecturer:
+    post:
+      summary: Updated Lecturer
+      description: update course using course code
+      operationId: updateCourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lecturer"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Lecturer has been updated successfully
+                type: string
+        default:
+          $ref: "#/components/responses/ErrorResponse"
+  /deleteLecturerByName/{name}:
+    delete:
+      summary: Delete Lecturer by Name
+      description: Delete Lecturer By Lecturer Name
+      operationId: deleteLecturerByName
+      parameters:
+        - name: code
+          in: path
+          description: Delete Course By Course Name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Deleted Successfully Lecturer
+                $ref: "#/components/schemas/Lecturer"
+        default:
+          $ref: "#/components/responses/ErrorResponse"        
+
+components:
+  schemas:
+    Course:
+      type: object
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        number_of_students:
+          type: integer
+        coordinator:
+          type: string
+        lecturers:
+          type: array
+          items:
+            type: string
+    Lecturer:
+      type: object
+      properties:
+        :
+          type: string
+        code:
+          type: string
+        number_of_students:
+          type: integer
+        coordinator:
+          type: string
+        lecturers:
+          type: array
+          items:
+            type: string        
+  responses:
+    ErrorResponse:
+      description: The specified resource was not found.
+    Error500Response:
+      description: Internal Server Crushed
+    Error404Response:
+      description: Course not Found
+    Error403Response:
+      description: Access Denied
