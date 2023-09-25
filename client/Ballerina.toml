@@ -1,0 +1,8 @@
+[package]
+org = "vaapi"
+name = "client"
+version = "0.1.1"
+distribution = "2201.7.0"
+
+[build-options]
+observabilityIncluded = true
